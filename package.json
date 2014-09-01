@@ -1,6 +1,6 @@
 {
     "name": "phoenix-client",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "a nodejs project for connecting apache phoenix (a hbase SQL interface)",
     "main": "phoenix.js",
     "scripts": {
