@@ -22,6 +22,6 @@ var db = new phoenix("jdbc:phoenix:nn1,192.168.0.121","username","passwd",["-Xmx
 
 var dataJson = db.query("select * from t1 limit 1");
 
-var bool = db.insert("upsert into t1(name) values('gaozhu')");
+var bool = db.upsert("upsert into t1(name) values('gaozhu')");
 
 var bool = db.upsertMuti(["sql1","sql2"]);
