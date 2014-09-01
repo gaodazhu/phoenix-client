@@ -25,7 +25,9 @@ function phoenix(url, username, password, javaoptions) {
     javaoptions && javaoptions.forEach(function (option) {
         java.options.push(option);
     })
-    java.classpath.push(__dirname+"/PhoenixClient.jar");
+    java.classpath.push(__dirname+"/java/druid-1.0.6.jar");
+    java.classpath.push(__dirname+"/java/phoenix-4.0.0-incubating-client.jar");
+    java.classpath.push(__dirname+"/java/PhoenixClient.jar");
     var db = java.newInstanceSync("com.mlsc.DBClient");
     java.callMethodSync(db, "init", url, username, password);
     this.query = function (sql) {

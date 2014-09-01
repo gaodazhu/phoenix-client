@@ -10,6 +10,15 @@ npm install phoenix-client
 
 npm install java
 
+#attention
+
+According to your hbase version ,please change the /java/phoenix-4.0.0-incubating-client.jar
+
+HBase 0.94 requires Apache Phoenix version 3.0
+
+HBase 0.98.x requires Apache Phoenix version 4.0
+
+.etc
 
 #usage:
 
