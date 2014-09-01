@@ -2,6 +2,9 @@ phoenix-client
 ==============
 
 a nodejs project for connecting apache phoenix (a hbase SQL interface)
+#install
+
+npm install phoenix-client
 
 #dependency:
 
