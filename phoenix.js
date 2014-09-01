@@ -1,7 +1,7 @@
 /**
  * Created by gaozhu on 2014/8/25.
  */
-exports.phoenix = function (url, username, password, javaoptions) {
+function phoenix(url, username, password, javaoptions) {
     if (!url || typeof(url) != "string") {
         throw "require phoenix url string like : jdbc:phoenix:192.168.252.131,192.168.252.132 ";
         return;
@@ -25,7 +25,7 @@ exports.phoenix = function (url, username, password, javaoptions) {
     javaoptions && javaoptions.forEach(function (option) {
         java.options.push(option);
     })
-    java.classpath.push("PhoenixClient.jar");
+    java.classpath.push(__dirname+"/PhoenixClient.jar");
     var db = java.newInstanceSync("com.mlsc.DBClient");
     java.callMethodSync(db, "init", url, username, password);
     this.query = function (sql) {
@@ -40,3 +40,4 @@ exports.phoenix = function (url, username, password, javaoptions) {
         return java.callMethodSync(db, "upsertMuti", sqlArray);
     }
 }
+module.exports = phoenix;
