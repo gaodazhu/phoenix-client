@@ -12,7 +12,9 @@ usage:
 
 phoenix = require("phoenix-client");
 
-var db = new phoenix("jdbc:phoenix:nn1,192.168.0.121","username","passwd");
+
+# first param 'url' is required
+var db = new phoenix("jdbc:phoenix:nn1,192.168.0.121","username","passwd",["-Xmx1024m"]);
 
 
 var dataJson = db.query("select * from t1 limit 1");
