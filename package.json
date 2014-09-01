@@ -1,0 +1,29 @@
+{
+    "name": "phoenix-client",
+    "version": "0.0.2",
+    "description": "a nodejs project for connecting apache phoenix (a hbase SQL interface)",
+    "main": "phoenix.js",
+    "scripts": {
+        "test": "no"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gaodazhu/phoenix-client.git"
+    },
+    "keywords": [
+        "phoenix",
+        "java",
+        "hbase",
+        "client",
+        "query"
+    ],
+    "author": "gaozhu",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/gaodazhu/phoenix-client/issues"
+    },
+    "homepage": "https://github.com/gaodazhu/phoenix-client",
+    "dependencies": {
+        "java": "0.4.2"
+    }
+}
