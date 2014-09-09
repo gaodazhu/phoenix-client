@@ -29,8 +29,17 @@ phoenix = require("phoenix-client");
 var db = new phoenix("jdbc:phoenix:nn1,192.168.0.121","username","passwd",["-Xmx1024m"]);
 
 
-var dataJson = db.query("select * from t1 limit 1");
+db.query("select * from t1 limit 1",function success(dataJson){
+    console.info(dataJson);
+},function error(e){
+});
 
-var bool = db.upsert("upsert into t1(name) values('gaozhu')");
+db.upsert("upsert into t1(name) values('gaozhu')",function success(){
+    console.info("upsert successfully");
+},function error(e){
+});
 
-var bool = db.upsertMuti(["sql1","sql2"]);
+db.upsertMuti(["sql1","sql2"],function success(){
+    console.info("upsert successfully");
+},function error(e){
+});;

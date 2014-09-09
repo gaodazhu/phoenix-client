@@ -30,16 +30,34 @@ function phoenix(url, username, password, javaoptions) {
     java.classpath.push(__dirname+"/java/PhoenixClient.jar");
     var db = java.newInstanceSync("com.mlsc.DBClient");
     java.callMethodSync(db, "init", url, username, password);
-    this.query = function (sql) {
-        return db2Json(java.callMethodSync(db, "query", sql));
+    this.query = function (sql,success,error) {
+        try{
+            success && success(db2Json(java.callMethodSync(db, "query", sql)));
+        }catch(e){
+            error && error(e);
+        }
     }
 
-    this.upsert = function (sql) {
-        return java.callMethodSync(db, "upsert", sql);
+    this.upsert = function (sql,success,error) {
+        try{
+            var result = java.callMethodSync(db, "upsert", sql);
+            result && success && success();
+            !result && error && error();
+        }catch(e){
+            error && error(e);
+        }
     }
-    this.upsertMuti = function (sqls) {
+    this.upsertMuti = function (sqls,success,error) {
+        if(!sqls instanceof Array || sqls.length == 0)
+            return;
         var sqlArray = java.newArray("java.lang.String", sqls);
-        return java.callMethodSync(db, "upsertMuti", sqlArray);
+        try{
+            var result = java.callMethodSync(db, "upsertMuti", sqlArray);
+            result && success && success();
+            !result && error && error();
+        }catch(e){
+            error && error(e);
+        }
     }
 }
 module.exports = phoenix;
